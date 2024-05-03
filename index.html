@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/styles/style.css">
+    <script src="https://kit.fontawesome.com/64d58efce2.js"></script>
+</head>
+<style>
+  .loader {
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+  
+}
+#loading_container{
+  position: fixed;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.767);
+  z-index: 100;
+  height: 100vh;
+  width: 100%;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+</style>
+<body>
+  <div id="quickviewContainer">
+  
+        <div id="quickviewbody">
+          <img src="/images/crud-image/close.png" id="close-quickcontainer">
+          <h2 id="quickviewtitle">name</h2>
+          <div id="quickview-top">
+              <img src="/images/dynamic-page-image/A21.png" alt="" id="main-img">
+          </div>
+          <div id="quickview-bottom">
+            <img src="/images/dynamic-page-image/acer2.jpeg"  class="changeimgs" id="quick1">
+            <img src="/images/dynamic-page-image/BLACKVIEW.png" alt="" class="changeimgs" id="quick2">
+            <img src="/images/dynamic-page-image/edit.png" alt="" class="changeimgs" id="quick3">    
+          </div>
+
+        </div>
+  </div>
+  <div id="tools-container">
+      <div id="tools-body">
+        <img src="/images/crud-image/close.png" id="close-edit-container">
+        <input type="text" id="iditem" placeholder="id" disabled>
+        <input type="text" id="titleitem" placeholder="title">
+        <input type="number" id="priceitem" placeholder="price" >
+        <input type="text" id="discreptionitem" placeholder="discreption">
+        <select id="categryitem">
+          <option value="laptop">laptop</option>
+          <option value="phone">phone</option>
+        </select>
+
+        <select id="branditem">
+          <option value="acer">acer</option>
+          <option value="lenovo">lenovo</option>
+          <option value="asus">asus</option>
+          <option value="dell">dell</option>
+          <option value="hp">hp</option>
+          <option value="msi">msi</option>
+          <option value="apple">apple</option>
+          <option value="blackview">black view</option>
+          <option value="oppo">oppo</option>
+          <option value="xiaomi">xiaomi</option>
+          <option value="huawei">huawei</option>
+          <option value="samsung">samsung</option>
+          <option value="nokia">nokia</option>
+        </select>
+        
+        <input type="number" id="countitem" placeholder="count">
+        <input type="number" id="rateitem" placeholder="rate">
+
+        <div id="upload-imgs-body">
+
+  
+          <input type="file" id="upload1" style="display: none;">
+          <label for="upload1"><img src="/images/header-images/add-image.png" id="addimg1"></label>
+  
+  
+          <input type="file" id="upload2" style="display: none;">
+          <label for="upload2"><img src="/images/header-images/add-image.png" id="addimg2"></label>
+  
+  
+          <input type="file" id="upload3" style="display: none;">
+          <label for="upload3"><img src="/images/header-images/add-image.png" id="addimg3"></label>
+
+        </div>
+
+        <button onclick="addItem()" id="addbutton">ADD</button>
+        <button style="background-color: red;" onclick="clearInputs()">CLEAR</button>
+        
+      </div>
+  </div>
+  
+  <div id="loading_container" style="display:none;">
+    <div class="loader"></div>
+  </div>
+  <div id="home-search-container">
+  </div>
+  <div id="profile-container" style="display: none;">
+    <div id="top-profile">
+      <div id="profile-img-body">
+        <img src="/images/home-images/user-interface.png" id="profileimginside">
+      </div>
+      <p id="profile-username">GUEST</p>
+    </div>
+    <div id="bottom-profile">
+      <button id="signinbutton">Sign in/Rigster</button>
+      <button id="logoutbutton" style="display: none;">Log out</button>
+    </div>
+  </div>
+
+    <div id="nav-container">
+        <div id="nav-body">
+            <div id="nav-links">
+              <img src="/images/header-images/close.png" id="close-nav">
+              <button onclick="changePages('home-button')">home</button>
+              <button id="edit-button2" onclick="changePages('edit-button')">edit</button>
+              <button onclick="changePages('contact-button')">contact us</button>
+              <button onclick="changePages()">laptops</button>
+              <button onclick="changePages()">phones</button>
+            </div>
+        </div>
+    </div>
+    <div id="categories-body">
+        <button onclick="dispaly_items_dynamic_body('phone'),totop()">PHONE</button>
+        <button onclick="dispaly_items_dynamic_body('laptop'),totop()">LAPTOP</button>
+        <button>category3</button>
+        <button>category4</button>
+    </div>
+    <div id="cart-container">
+        <div id="cart-body">
+            <img src="/images/header-images/close.png" id="close-cart">
+            <p class="cart-body-title">Your Cart</p>
+            <div class="cart-products-body">
+              <div class="product">
+                <div class="product-img-body">
+                  <img src="/images/header-images/mail.png" alt="" class="product-img">
+                </div>
+                <div class="product-description-body">
+                  <p class="product-title">samsung S23</p>
+                  <p class="product-price">999$</p>
+                  <div class="product-quantity-body">
+                   <button class="increase-product">-</button>
+                    <p class="product-quntity">1</p>
+                    <button class="increase-product">+</button>
+                    <p class="total-per-product">999$</p>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            <div class="cart-bottom-body"><p class="total-text">TOTAL:</p><p id="total-of-products" class="price">1200$</p></div>
+            <div class="cart-bottom-body"><button onclick="clear_cart()">clear cart</button> <button onclick="checkouts()" id="check out">checkout</button></div>
+
+        </div>
+    </div>
+    <div id="container">
+        <div id="header-container">
+          <img id="profileimg" src="/images/home-images/user-interface.png">
+            <div id="header-top-body">
+                <div id="header-top-left">
+                    <p id="header-mail"><img src="/images/header-images/mail.png">techTemple@gmail.com</p>
+                    <p id="header-phone"><img src="/images/header-images/call.png" alt="">+961 03026681</p>
+                </div>
+                <div id="header-top-cart-body"><img src="/images/header-images/shopping-cart.png" id="main-cart"><p id="cart-number">0</p></div>
+            </div><!--header-top-body-->
+            <div id="header-bottom-body">
+                <div id="header-bottom-left">
+                    <img src="/images/header-images/nav.png" id="nav-icon">
+                    <img src="/images/header-images/LOGO.png" id="logo">
+                    <button onclick="changePages(this.id)" class="button" id="home-button">home</button>
+                    <button onclick="changePages(this.id)" class="button" id="categories-button">Categories <img src="/images/header-images/arrowDown.png" id="categriesimg"></button>
+                    <button onclick="changePages(this.id)" class="button" id="edit-button">Edit</button>
+                    <button onclick="changePages(this.id)" class="button" id="contact-button">Contact</button>
+                </div>
+                <div id="header-bottom-right">
+                    <input type="search" id="search-input" onkeyup="createItemCards(this.value)" placeholder="Search...">
+                    <div id="header-top-cart-body2"><img src="/images/header-images/white-cart.png"><p id="cart-number2">0</p></div>
+                </div>
+            </div><!--header-bottom-body-->
+            <div id="header-search-body">
+                <input type="search" id="search-input2" placeholder="Search..." onkeyup="createItemCards(this.value)">
+            </div>
+        </div><!--header-container-->
+        <div id="home">
+            <div class="main_banner-container">
+                <div class="main_banner">
+                    <div class="main_banner-text">
+                    <h2>COMPUTERs</h2>
+                    <h1>STORE</h1>
+                    <button id="main_banner-button">SHOP</button>
+                    </div>
+                </div>
+            </div><!--main_banner-container-->
+            <div id="home-categories-container">
+                  <p id="home-categories-title">OUR CATEGORIES</p>
+              <div id="home-categories-body">
+                <div onclick="dispaly_items_dynamic_body('phone')" class="home-category-body" id="home-category-body-1">
+                  <p>PHONES</p>
+                </div>
+                <div onclick="dispaly_items_dynamic_body('laptop')" class="home-category-body" id="home-category-body-2">  
+                    <p>LAPTOPS</p>
+                </div>
+              </div>
+            </div>
+            <div id="home-toprated-container">
+              <p id="home-toprated-title">TOP RATED PRODUCTS</p>
+                <div id="home-toprated-body">
+                  <div class="dynamic-product-card">
+                        <button class="quickviewbutton" onclick="openquickview(1)">quick view</button>
+                        <img src="/images/dynamic-page-image/download.jpeg" class="dynamic-product-img" alt="product photo">
+                        <p class="dynamic-product-title">samsung A12</p>
+                        <p class="dynamic-product-description">12RAM <br> 5000mah <br> 5.5inch</p>
+                        <p class="dynamic-product-price">1220USD</p>
+                        <div class="card-rate">
+                          <p>7.5</p><img src="/images/dynamic-page-image/star.png" alt="">
+                        </div>
+                         <!-- <button class="dynamic-product-addToCart">add to cart</button>-->
+                  </div>
+                </div><!--home-toprated-body-->
+            </div><!--home-toprated-container-->
+            <div id="commingsoon-container">
+              <p id="commingsoon-container-title">COOMING SOON</p>
+              <div id="commingsoon-body">
+                    <div class="commingsoon">
+                      <p>COMPUTER PARTS</p>
+                    </div>
+                    <div class="commingsoon">
+                      <p>CAMERA</p>
+                    </div>
+                    <div class="commingsoon">
+                      <p>SMART WATCHES</p>
+                    </div>
+                    <div class="commingsoon">
+                      <p>SONY</p>
+                    </div>
+                    <div class="commingsoon">
+                      <p>TV</p>
+                    </div>
+                    <div class="commingsoon">
+                      <p>VLOGGING TOOLS</p>
+                    </div>
+                    <div class="commingsoon">
+                      <p>HOME APPLIANCES</p>
+                    </div>
+              </div>
+              
+            </div>
+            <div id="popular-brands-container">
+                  <p id="popular-title">POPULAR BRANDS</p>
+                  <div id="popular-brands-body">
+                    <div class="popular-brnad" onclick="filter_By_popular_brands('samsung','phone')">
+                        <img src="/images/home-images/samsung.png">
+                    </div>
+                    <div class="popular-brnad" onclick="filter_By_popular_brands('apple','phone')">
+                          <img src="/images/home-images/apple-logo.png">
+                    </div>
+                    <div class="popular-brnad">
+                        <img src="/images/home-images/dell.png" onclick="filter_By_popular_brands('dell','laptop')">
+                    </div>
+                  </div>
+            </div>
+        </div><!--home-->
+        <!--<div id="edit" style="display: none;">(--EDIT--)
+
+         
+
+          <div id="edit-container" style="left: -250px;">
+            <img src="/images/crud-image/close.png" id="close-edit-container">
+            <input type="text" id="iditem" placeholder="id" disabled>
+            <input type="text" id="titleitem" placeholder="title">
+            <input type="number" id="priceitem" placeholder="price" >
+            <input type="text" id="discreptionitem" placeholder="discreption">
+            <select id="categryitem">
+              <option value="laptop">laptop</option>
+              <option value="phone">phone</option>
+            </select>
+
+            <select id="branditem">
+              <option value="acer">acer</option>
+              <option value="lenovo">lenovo</option>
+              <option value="asus">asus</option>
+              <option value="dell">dell</option>
+              <option value="hp">hp</option>
+              <option value="msi">msi</option>
+              <option value="apple">apple</option>
+              <option value="blackview">black view</option>
+              <option value="oppo">oppo</option>
+              <option value="xiaomi">xiaomi</option>
+              <option value="huawei">huawei</option>
+              <option value="samsung">samsung</option>
+              <option value="nokia">nokia</option>
+            </select>
+
+            <input type="number" id="countitem" placeholder="count">
+            <input type="number" id="rateitem" placeholder="rate">
+            <input type="file" id="upload" style="display: none;">
+            <label for="upload"><img src="/images/header-images/add-image.png" id="addimg"></label>
+            <button onclick="addItem()" id="addbutton">ADD</button>
+            <input type="search" id="itemsearch" placeholder="Search" onkeyup="searchby(this.value)">
+            <select name="" id="searchby">
+              <option value="" selected disabled>Search By</option>
+              <option value="category">category</option>
+              <option value="name">name</option>
+            </select>
+                    
+          </div>-->
+          <div id="cruds" style="display: none;">
+            <h2>PRODUCT MANGMENT</h2>
+            <img src="/images/crud-image/add.png" id="add-product-img" alt="">
+              
+       <input type="search" class="table-search" id="itemsearch" placeholder="Search" onkeyup="searchby(this.value)">
+       <select name="" id="searchby" class="table-search">
+         <option value="" selected disabled>Search By</option>
+         <option value="category">category</option>
+         <option value="name">name</option>
+       </select>
+              <div id="table-container">
+                <table>
+                  <tr id="head">
+                      <th>id</th>
+                      <th>title</th>
+                      <th>price</th>
+                      <th>discreption</th>
+                      <th>category</th>
+                      <th>brand</th>
+                      <th>rate</th>
+                      <th>count</th>
+                      <th>uppdate</th>
+                      <th>delete</th>
+                  </tr>
+                  <tbody id="tbody">
+        
+                  </tbody>
+              </table>
+              </div>
+            </div>
+          </div>
+           
+
+        </div><!--EDIT-->
+        <div id="contact" style="display: none;"><!--contact-->
+
+            <div class="form">
+                <div class="contact-info">
+                  <h3 class="title">Let's get in touch</h3>
+                  <p class="text">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe
+                    dolorum adipisci recusandae praesentium dicta!
+                  </p>
+        
+                  <div class="info">
+                    <div class="information">
+                      <img src="img/location.png" class="icon" alt="" />
+                      <p>92 Cherry Drive Uniondale, NY 11553</p>
+                    </div>
+                    <div class="information">
+                      <img src="img/email.png" class="icon" alt="" />
+                      <p>lorem@ipsum.com</p>
+                    </div>
+                    <div class="information">
+                      <img src="img/phone.png" class="icon" alt="" />
+                      <p>123-456-789</p>
+                    </div>
+                  </div>
+        
+                  <div class="social-media">
+                    <p>Connect with us :</p>
+                    <div class="social-icons">
+                      <a href="#">
+                        <i class="fab fa-facebook-f"></i>
+                      </a>
+                      <a href="#">
+                        <i class="fab fa-twitter"></i>
+                      </a>
+                      <a href="#">
+                        <i class="fab fa-instagram"></i>
+                      </a>
+                      <a href="#">
+                        <i class="fab fa-linkedin-in"></i>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+        
+                <div class="contact-form">
+                  <span class="circle one"></span>
+                  <span class="circle two"></span>
+        
+                  <form action="index.html" autocomplete="off">
+                    <h3 class="title">Contact us</h3>
+                    <div class="input-container">
+                      <input type="text" name="name" class="input" />
+                      <label for="">Username</label>
+                      <span>Username</span>
+                    </div>
+                    <div class="input-container">
+                      <input type="email" name="email" class="input" />
+                      <label for="">Email</label>
+                      <span>Email</span>
+                    </div>
+                    <div class="input-container">
+                      <input type="tel" name="phone" class="input" />
+                      <label for="">Phone</label>
+                      <span>Phone</span>
+                    </div>
+                    <div class="input-container textarea">
+                      <textarea name="message" class="input"></textarea>
+                      <label for="">Message</label>
+                      <span>Message</span>
+                    </div>
+                    <input type="submit" value="Send" class="btn" />
+                  </form>
+                </div>
+              </div>
+        </div><!--contact-->
+
+        <div id="dynmic-category-page"><!--dynmic-category-page-->
+          <img src="/images/dynamic-page-image/edit.png" id="open-filters-container">
+        <h1><span id="dynamic-title"></span></h1>
+        <div id="range-body">
+           <p>filter by price:<span id="range-value">10000</span><span>$</span></p>
+          <input type="range" id="filter-by-range" min="200" max="10000" step="100" value="10000">
+          <p>by brands :</p>
+          <select id="brandfilter">
+            <option value="all" selected>all</option>
+            <option value="acer">acer</option>
+            <option value="lenovo">lenovo</option>
+            <option value="asus">asus</option>
+            <option value="dell">dell</option>
+            <option value="hp">hp</option>
+            <option value="msi">msi</option>
+            <option value="apple">apple</option>
+            <option value="blackview">black view</option>
+            <option value="oppo">oppo</option>
+            <option value="xiaomi">xiaomi</option>
+            <option value="huawei">huawei</option>
+            <option value="samsung">samsung</option>
+            <option value="nokia">nokia</option>
+          </select>
+          <p>by category :</p>
+          <select onchange="dispaly_items_dynamic_body(this.value)" id="filterbycategory">
+            <option value="laptop">Laptop</option>
+            <option value="phone">phone</option>
+          </select>
+          
+        </div>
+        
+       <div id="dynamic-products-body">
+          <div class="dynamic-product-card">
+            <img src="/images/dynamic-page-image/download.jpeg" class="dynamic-product-img" alt="product photo">
+            <p class="dynamic-product-title">samsung A12</p>
+            <p class="dynamic-product-description">12RAM <br> 5000mah <br> 5.5inch</p>
+            <p class="dynamic-product-price">1220USD</p>
+            <div class="card-rate">
+              <p>7.5</p><img src="/images/dynamic-page-image/star.png" alt="">
+            </div>
+            <button class="dynamic-product-addToCart">add to cart</button>
+
+          </div>
+        </div>
+
+        </div><!--dynmic-category-page-->
+
+        <div id="LogIN" style="display: none;"><!--login-->
+          <div class="LOG-container">
+            <div class="forms-LOG-container">
+              <div class="signin-signup">
+                <form action="" class="sign-in-form">
+                  <h2 class="titlef">Sign In</h2>
+                  <div class="input-field">
+                    <i class="fas fa-user"></i>
+                    <input type="text" placeholder="Username" id="username" />
+                  </div>
+                  <div class="input-field">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" placeholder="Password" id="password"/>
+                  </div>
+                  <input type="button" value="Login" class="btnl solid" onclick="return credential();" />
+      
+                  <p class="social-text">Or Sign in with social platforms</p>
+                  <div class="social-media">
+                    <a href="#" class="social-icon">
+                      <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="social-icon">
+                      <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="social-icon">
+                      <i class="fab fa-google"></i>
+                    </a>
+                    <a href="#" class="social-icon">
+                      <i class="fab fa-linkedin-in"></i>
+                    </a>
+                  </div>
+                </form>
+      
+      
+                <form action="" class="sign-up-form">
+                  <h2 class="title">Sign Up</h2>
+                  <div class="input-field">
+                    <i class="fas fa-user"></i>
+                    <input type="text" placeholder="Username" id="username1" />
+                  </div>
+                  <div class="input-field">
+                    <i class="fas fa-envelope"></i>
+                    <input type="email" placeholder="Email" id="email" />
+                  </div>
+                  <div class="input-field">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" placeholder="Password" id="password1"/>
+                  </div>
+                  <input type="button" value="Sign Up" class="btnl solid" id="signupbutton" />
+      
+                  <p class="social-text">Or Sign up with social platforms</p>
+                  <div class="social-media">
+                    <a href="#" class="social-icon">
+                      <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="social-icon">
+                      <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="social-icon">
+                      <i class="fab fa-google"></i>
+                    </a>
+                    <a href="#" class="social-icon">
+                      <i class="fab fa-linkedin-in"></i>
+                    </a>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <div class="panels-LOG-container">
+      
+              <div class="panel left-panel">
+                  <div class="content">
+                      <h3>New here?</h3>
+                      <p>Register and create your account</p>
+                      <button class="btnl transparent" id="sign-up-btn">Sign Up</button>
+                  </div>
+                  <img src="./img/log.svg" class="image" alt="">
+              </div>
+      
+              <div class="panel right-panel">
+                  <div class="content">
+                      <h3>One of us?</h3>
+                      <p>Use your account to benefit of our services </p>
+                      <button class="btnl transparent" id="sign-in-btn">Sign In</button>
+                  </div>
+                  <img src="./img/register.svg" class="image" alt="">
+              </div>
+            </div>
+          </div>
+
+        </div><!--login-->
+
+        <!--footer-->
+        <footer>
+          <div class="container-footer">
+              <div class="row">
+                    <div class="col" id="company">
+                        <img src="/images/header-images/LOGO.png" class="logo">
+                        <p>
+                          We are specialized in laptops.
+                          Take a look of our products.
+                        </p>
+                        <div class="social">
+                          <a href="#"><i class="fa fa-facebook"></i></a>
+                          <a href="#"><i class="fa fa-instagram"></i></a>
+                          <a href="#"><i class="fa fa-youtube"></i></a>
+                          <a href="#"><i class="fa fa-twitter"></i></a>
+                        </div>
+                    </div>
+      
+      
+                    <div class="col" id="services">
+                       <h3>BRANDS</h3>
+                       <div class="links">
+                          <a href="#">LENOVO</a>
+                          <a href="#">HP</a>
+                          <a href="#">APPLE</a>
+                          <a href="#">DELL</a>
+                       </div>
+                    </div>
+      
+                    <div class="col" id="useful-links">
+                       <h3>Links</h3>
+                       <div class="links">
+                          <a href="#">About Us</a>
+                          <a href="#">Our Products</a>
+                          <a href="#">Contact us form</a>
+                          <a href="#">Home</a>
+                       </div>
+                    </div>
+      
+                    <div class="col" id="contact">
+                        <h3>Contact</h3>
+                        <div class="contact-details">
+                           <i class="fa fa-location"></i>
+                           <p>Al hamra, <br> Beirut</p>
+                        </div>
+                        <div class="contact-details">
+                           <i class="fa fa-phone"></i>
+                           +961 03 444 444
+                        </div>
+                    </div>
+              </div>
+      
+              <div class="row">
+                    <div class="form">
+                      <form>
+                          <input type="text" placeholder="Email here..." name="message">
+                          <button><i class="fa fa-paper-plane"></i>SEND</button>
+                      </form>
+                    </div>
+              </div>
+      
+          </div>
+       </footer>
+        <!--footer-->
+        
+       
+
+    </div><!--CONTAINER-->
+   <script src="/main.js"></script>
+</body>
+</html>
