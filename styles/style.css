@@ -337,7 +337,6 @@ height: 5px;
 #home-toprated-body{
 display: flex;
 overflow-x: auto;
-justify-content: space-around;
 margin-top: 50px;
 }
 #home-toprated-body .dynamic-product-card{
