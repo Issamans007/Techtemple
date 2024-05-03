@@ -365,7 +365,6 @@ margin-top: 50px;
   max-width: 110px;
   border-radius: 100%;
   background-color: red;
- 
   color: white;
   display: flex;
   align-items: center;
@@ -2301,13 +2300,16 @@ form.sign-in-form {
     font-size: 12px;
     width: 100%;
   }
-  title, #commingsoon-container-title, #popular-title {
+  /*title, #commingsoon-container-title, #popular-title {
     font-size: 25px;
-  }
-  #popular-brands-container{
+  }*/
+ /* #popular-brands-container{
     padding: 0px 10px;
-  }
-  #home-categories-title, #home-toprated-title, #commingsoon-container-title, #popular-title{
+  }*/
+  #home-categories-title,
+   #home-toprated-title,
+   #commingsoon-container-title,
+   #popular-title{
     font-size: 22px;
   }
   #dynamic-products-body .dynamic-product-card {
