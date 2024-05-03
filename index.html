@@ -57,7 +57,7 @@
         </div>
   </div>
   <div id="tools-container">
-      <div id="tools-body">
+      <div id="tools-body" style="display: none;">
         <img src="/images/crud-image/close.png" id="close-edit-container">
         <input type="text" id="iditem" placeholder="id" disabled>
         <input type="text" id="titleitem" placeholder="title">
@@ -134,16 +134,14 @@
               <button onclick="changePages('home-button')">home</button>
               <button id="edit-button2" onclick="changePages('edit-button')">edit</button>
               <button onclick="changePages('contact-button')">contact us</button>
-              <button onclick="changePages()">laptops</button>
-              <button onclick="changePages()">phones</button>
+              <button onclick="dispaly_items_dynamic_body('laptop'),totop()">laptops</button>
+              <button onclick="dispaly_items_dynamic_body('phone'),totop()">phones</button>
             </div>
         </div>
     </div>
     <div id="categories-body">
         <button onclick="dispaly_items_dynamic_body('phone'),totop()">PHONE</button>
         <button onclick="dispaly_items_dynamic_body('laptop'),totop()">LAPTOP</button>
-        <button>category3</button>
-        <button>category4</button>
     </div>
     <div id="cart-container">
         <div id="cart-body">
@@ -192,7 +190,7 @@
                     <div class="main_banner-text">
                     <h2>COMPUTERs</h2>
                     <h1>STORE</h1>
-                    <button id="main_banner-button">SHOP</button>
+                    <button onclick="dispaly_items_dynamic_body('laptop')" id="main_banner-button">SHOP</button>
                     </div>
                 </div>
             </div><!--main_banner-container-->
@@ -532,20 +530,19 @@
                     <div class="col" id="services">
                        <h3>BRANDS</h3>
                        <div class="links">
-                          <a href="#">LENOVO</a>
-                          <a href="#">HP</a>
-                          <a href="#">APPLE</a>
-                          <a href="#">DELL</a>
+                          <a onclick="filter_By_popular_brands('lenovo','laptop')">LENOVO</a>
+                          <a onclick="filter_By_popular_brands('hp','laptop')">HP</a>
+                          <a onclick="filter_By_popular_brands('apple','phone')">APPLE</a>
+                          <a onclick="filter_By_popular_brands('dell','laptop')">DELL</a>
                        </div>
                     </div>
       
                     <div class="col" id="useful-links">
                        <h3>Links</h3>
                        <div class="links">
-                          <a href="#">About Us</a>
-                          <a href="#">Our Products</a>
-                          <a href="#">Contact us form</a>
-                          <a href="#">Home</a>
+                          <a onclick="dispaly_items_dynamic_body('laptop')">Our Products</a>
+                          <a onclick="changePages('contact-button')">Contact us form</a>
+                          <a onclick="changePages('home-button')">Home</a>
                        </div>
                     </div>
       
@@ -557,7 +554,7 @@
                         </div>
                         <div class="contact-details">
                            <i class="fa fa-phone"></i>
-                           +961 03 444 444
+                           +961 03026681
                         </div>
                     </div>
               </div>

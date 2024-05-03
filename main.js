@@ -898,6 +898,7 @@ function dispaly_items_dynamic_body(name){
   }else{
     dynamic_title.innerText="LAPTOPS";
   }
+  totop()
   
   datafounded=false;
  dynamic_products_body.innerHTML=""

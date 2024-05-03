@@ -2215,6 +2215,9 @@ form.sign-in-form {
     top: 65px;
     width: 280px;
  }
+ #nav-icon{
+  margin-left: 10px;
+ }
 }
 @media only screen and (max-width: 725px){
   #home-categories-body{
