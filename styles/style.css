@@ -1244,7 +1244,7 @@ footer{
   position: relative;
   width: 100%;
   min-height: 350px;
-  padding: 3rem 1rem;
+  padding: 3rem 0rem;
 }
 .container-footer {
  max-width: 1140px;
