@@ -1245,6 +1245,7 @@ footer{
   width: 100%;
   min-height: 350px;
   padding: 3rem 0rem;
+  overflow: hidden;
 }
 .container-footer {
  max-width: 1140px;
