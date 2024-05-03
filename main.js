@@ -1012,12 +1012,12 @@ function sortItemsByRateDescAndDisplay(items) {
       </div>`;
   }
 
-  home_toprated_body.innerHTML = html;
+  home_toprated_body.innerHTML += html;
 }
 
-setTimeout(() => {
+
   sortItemsByRateDescAndDisplay(items);
-}, 10000);
+
 
 let quickviewContainer=document.getElementById("quickviewContainer")
 let mainimg=document.getElementById("main-img")

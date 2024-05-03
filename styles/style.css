@@ -2220,6 +2220,7 @@ form.sign-in-form {
 @media only screen and (max-width: 725px){
   #home-categories-body{
     flex-direction: column;
+    padding: 50px;
   }
   #home-category-body-1,#home-category-body-2{
     width: 100%;
