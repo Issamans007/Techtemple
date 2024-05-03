@@ -1017,7 +1017,7 @@ function sortItemsByRateDescAndDisplay(items) {
 
 setTimeout(() => {
   sortItemsByRateDescAndDisplay(items);
-}, 5000);
+}, 10000);
 
 let quickviewContainer=document.getElementById("quickviewContainer")
 let mainimg=document.getElementById("main-img")
