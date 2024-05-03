@@ -1254,6 +1254,7 @@ footer{
  justify-content: center;
  align-items: center;
  flex-direction: column;
+ padding: 10px;
 
 
 }
@@ -1648,6 +1649,7 @@ cursor: pointer;
   background-color: #fff;
   min-height: 100vh;
   overflow: hidden;
+  padding: 0px;
 }
 
 .forms-LOG-container {
@@ -2004,9 +2006,9 @@ form.sign-in-form {
   }
 }
 
-@media (max-width: 570px) {
+/*@media (max-width: 570px) {
   form {
-    padding: 0 1.5rem;
+  
   }
 
   .image {
@@ -2028,7 +2030,7 @@ form.sign-in-form {
     bottom: 28%;
     left: 50%;
   }
-}
+}*/
 
 
 #profile-container{
@@ -2265,11 +2267,6 @@ form.sign-in-form {
 #upload-imgs-body img{
   max-width: 75px;
 }
-
-
-
-
-
 }
 @media only screen and (max-width: 400px) and (min-width: 320px) {
   .main_banner-text{

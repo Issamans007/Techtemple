@@ -988,7 +988,6 @@ if(datafounded==false){
 //dynamic page
 
 let home_toprated_body=document.getElementById("home-toprated-body")
-console.log(home_toprated_body)
 function sortItemsByRateDescAndDisplay(items) {
   home_toprated_body.innerHTML = "";
   
