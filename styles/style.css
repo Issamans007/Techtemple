@@ -870,7 +870,7 @@ textarea {
 }
 
 .input {
-  width: 100%;
+  width: 90%;
   outline: none;
   border: 2px solid #fafafa;
   background: none;
@@ -2187,7 +2187,7 @@ form.sign-in-form {
 }
 
 }
-@media only screen and (max-width: 400px) and (min-width: 320px){
+@media only screen and (max-width: 400px) and (min-width: 300px){
    #logo{
     padding-right: 15px;
     width: 120px;
