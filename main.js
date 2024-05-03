@@ -1015,7 +1015,10 @@ function sortItemsByRateDescAndDisplay(items) {
   home_toprated_body.innerHTML = html;
 }
 
-sortItemsByRateDescAndDisplay(items);
+setTimeout(() => {
+  sortItemsByRateDescAndDisplay(items);
+}, 5000);
+
 let quickviewContainer=document.getElementById("quickviewContainer")
 let mainimg=document.getElementById("main-img")
 let quick1=document.getElementById("quick1")
