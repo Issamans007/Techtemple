@@ -332,7 +332,7 @@ height: 5px;
 #home-toprated-container{
   display: flex;
   flex-direction: column;
-  padding: 50px 10px;
+  padding:0px;
   width: 100%
 }
 #home-toprated-body{
