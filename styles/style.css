@@ -333,7 +333,6 @@ height: 5px;
   display: flex;
   flex-direction: column;
   padding:50px 10px;
-  width: 100%
 }
 #home-toprated-body{
 display: flex;
@@ -779,7 +778,6 @@ transition: 0.2s;
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 #contact form{
   display: block;
