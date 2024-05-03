@@ -2232,6 +2232,10 @@ form.sign-in-form {
   .popular-brnad img{
     width: 70px;
   }
+  #home-categories-body{
+    flex-direction: column;
+    padding: 35px;
+  }
   #popular-brands-container{
     padding: 20px 10px;
   }
@@ -2271,6 +2275,10 @@ form.sign-in-form {
   .main_banner-text{
     margin-left: 20px;
     padding-top: 180px;
+  }
+  #home-categories-body{
+    flex-direction: column;
+    padding: 20px;
   }
   .main_banner-text h1{
     font-size: 70px;
