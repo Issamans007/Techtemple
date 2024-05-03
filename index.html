@@ -190,17 +190,17 @@
                     <div class="main_banner-text">
                     <h2>COMPUTERs</h2>
                     <h1>STORE</h1>
-                    <button onclick="dispaly_items_dynamic_body('laptop')" id="main_banner-button">SHOP</button>
+                    <button onclick="dispaly_items_dynamic_body('laptop'),totop()" id="main_banner-button">SHOP</button>
                     </div>
                 </div>
             </div><!--main_banner-container-->
             <div id="home-categories-container">
                   <p id="home-categories-title">OUR CATEGORIES</p>
               <div id="home-categories-body">
-                <div onclick="dispaly_items_dynamic_body('phone')" class="home-category-body" id="home-category-body-1">
+                <div onclick="dispaly_items_dynamic_body('phone'),totop()" class="home-category-body" id="home-category-body-1">
                   <p>PHONES</p>
                 </div>
-                <div onclick="dispaly_items_dynamic_body('laptop')" class="home-category-body" id="home-category-body-2">  
+                <div onclick="dispaly_items_dynamic_body('laptop'),totop()" class="home-category-body" id="home-category-body-2">  
                     <p>LAPTOPS</p>
                 </div>
               </div>
@@ -393,7 +393,7 @@
             <option value="nokia">nokia</option>
           </select>
           <p>by category :</p>
-          <select onchange="dispaly_items_dynamic_body(this.value)" id="filterbycategory">
+          <select onchange="dispaly_items_dynamic_body(this.value),totop()" id="filterbycategory">
             <option value="laptop">Laptop</option>
             <option value="phone">phone</option>
           </select>
@@ -540,7 +540,7 @@
                     <div class="col" id="useful-links">
                        <h3>Links</h3>
                        <div class="links">
-                          <a onclick="dispaly_items_dynamic_body('laptop')">Our Products</a>
+                          <a onclick="dispaly_items_dynamic_body('laptop'),totop()">Our Products</a>
                           <a onclick="changePages('contact-button')">Contact us form</a>
                           <a onclick="changePages('home-button')">Home</a>
                        </div>

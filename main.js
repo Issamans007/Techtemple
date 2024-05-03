@@ -9,12 +9,15 @@ let cart_butto2=document.getElementById("header-top-cart-body2")
 let cart_container=document.getElementById('cart-container')
 let cart_body=document.getElementById('cart-body')
 let close_cart=document.getElementById('close-cart')
+let loading_container=document.getElementById("loading_container")
 function totop(){
   window.scroll({
     top: 0, // Vertical scroll position (in pixels)
     behavior: 'smooth' // Optional: smooth scrolling
   });
 }
+
+
 open_nav.addEventListener('click',function(){
 nav_container.style.left='0'
 })
@@ -803,7 +806,7 @@ function control_cart(){
   displayFromCart()
 
 }
-let loading_container=document.getElementById("loading_container")
+
 function checkouts(){
   
   if(cart.length!=0){
@@ -898,8 +901,6 @@ function dispaly_items_dynamic_body(name){
   }else{
     dynamic_title.innerText="LAPTOPS";
   }
-  totop()
-  
   datafounded=false;
  dynamic_products_body.innerHTML=""
 for(let i=0;i<items.length;i++){
@@ -1113,6 +1114,17 @@ let users=[{
   type:"user",
   cart:[]
 }]
+
+
+
+
+
+
+
+
+
+
+
 loginbool=false;
 edit_button.style.display="none"
 let loginobject={};
@@ -1126,6 +1138,7 @@ function credential() {
       for(let i=0;i<users.length;i++){
         if(username==users[i].username
           &&password==users[i].password){
+            localStorage.setItem("iamlogin",JSON.stringify([users[i].username,users[i].password]));
             found=true
             loginbool=true;
             loginobject=users[i];
@@ -1162,6 +1175,7 @@ logoutbutton.addEventListener("click",function(){
   logoutbutton.style.display="none"
   loginobject={}
   clear_cart();
+  localStorage.removeItem("iamlogin");
 
   loading_container.style.display="flex"
 
@@ -1252,3 +1266,14 @@ window.addEventListener('resize', function(){
     edit_button.style.display='none'
   }
 });
+
+function whologin(){
+  if(localStorage.length==3){
+    whologin = JSON.parse(localStorage.getItem('iamlogin'))
+    var username = document.getElementById('username').value=whologin[0];
+    var password = document.getElementById('password').value=whologin[1];
+    credential();
+  }
+  loading_container.style.display="none"
+}
+whologin()
