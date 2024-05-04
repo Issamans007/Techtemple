@@ -458,8 +458,8 @@ table +=`
 <td>${items[i].brand}</td>
 <td>${items[i].rate}</td>
 <td>${items[i].count}</td>
-<td><button onclick="updateData(${i})" id="update">update</button></td>
-<td><button onclick="deleteItem(${i}) " id="delete">delete</button></td>
+<td><button onclick="updateData(${items[i].id})" id="update">update</button></td>
+<td><button onclick="deleteItem(${items[i].id}) " id="delete">delete</button></td>
 
 </tr> 
 `
@@ -469,7 +469,8 @@ tbody.innerHTML = table;
 }
 showData();
 
-function updateData(i){
+function updateData(id){
+  let i = items.findIndex(element => element.id === id);
 id.value=items[i].id
 title.value=items[i].title
 price.value=items[i].price
@@ -547,7 +548,8 @@ let update =document.getElementById("update");
 
 
 
-function deleteItem(i){
+function deleteItem(id){
+  let i = items.findIndex(element => element.id === id);
   if(confirm()){
         items.splice(i,1);
     setTimeout(() => {
@@ -734,9 +736,9 @@ function displayFromCart() {
               <p class="product-title">${cart[i].title}</p>
               <p class="product-price price">${cart[i].price}USD</p>
               <div class="product-quantity-body">
-                  <button class="increase-product" onclick="decrease_product_countity(${i})">-</button>
+                  <button class="increase-product" onclick="decrease_product_countity(${cart[i].id})">-</button>
                   <p class="product-quntity">${cart[i].countincart}</p>
-                  <button class="increase-product" onclick="increase_product_countity(${i})">+</button>
+                  <button class="increase-product" onclick="increase_product_countity(${cart[i].id})">+</button>
                   <p class="total-per-product price">${getPricePerProduct(i)}USD</p>
               </div>
           </div>
@@ -777,14 +779,17 @@ function clear_cart(){
   dispaly_items_dynamic_body(categorychoosen);
   
 }
-function increase_product_countity(i){
+
+function increase_product_countity(id){
+  let i = cart.findIndex(element => element.id === id);
   if(cart[i].countincart+1<=cart[i].count)
   cart[i].countincart++;
   displayFromCart();
   getPriceForAllProduct();
   control_Users()
 }
-function decrease_product_countity(i){
+function decrease_product_countity(id){
+  let i = cart.findIndex(element => element.id === id);
 cart[i].countincart--;
 if(cart[i].countincart==0){
   cart.splice(i,1)
