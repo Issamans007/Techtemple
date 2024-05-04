@@ -1026,11 +1026,8 @@ function sortItemsByRateDescAndDisplay(items) {
 }
 
 
-  sortItemsByRateDescAndDisplay(items);
+ 
 
-  window.onload = function() {
-    home_toprated_body.scrollLeft = 0;
-};
 
 let quickviewContainer=document.getElementById("quickviewContainer")
 let mainimg=document.getElementById("main-img")
@@ -1265,6 +1262,7 @@ function initialize() {
       items = JSON.parse(localStorage.getItem('items'));
     }
     showData();
+    sortItemsByRateDescAndDisplay(items);
 }
 initialize()
 //sign in
