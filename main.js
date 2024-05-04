@@ -849,6 +849,7 @@ function checkouts(){
     }
     setTimeout(() => {
       alert("DONE")
+      showData()
     }, 3500);
     control_Users()
      
