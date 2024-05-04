@@ -342,7 +342,6 @@ let temp;
 let brand=document.getElementById("branditem")
 let add_product_img=document.getElementById('add-product-img')
 let close_edit_container=document.getElementById("close-edit-container")
-//let edit_container=document.getElementById("edit-container")
 let tools_container=document.getElementById("tools-container")
 
 input_file1.onchange=function(){
@@ -959,6 +958,7 @@ function dispaly_items_dynamic_body(name){
   categories_body.style.display='none'
   LogIN.style.display='none'
   dynmic_category_page.style.display='flex'
+  nav_container.style.left='-100%'
   if(name=="phone"){
     dynamic_title.innerText="SMART PHONES";
    
@@ -1141,8 +1141,8 @@ signinbutton.addEventListener("click",function(){
     contact.style.display="none";
     dynmic_category_page.style.display="none";
     window.scroll({
-      top: 0, // Vertical scroll position (in pixels)
-      behavior: 'smooth' // Optional: smooth scrolling
+      top: 0, 
+      behavior: 'smooth' 
     });
 })
 
@@ -1181,16 +1181,11 @@ let users=[{
   cart:[],
 }]
 
-
-
-
 loginbool=false;
 edit_button.style.display="none"
 let loginobject={};
 let signupbutton=document.getElementById("signupbutton")
 let profile_username=document.getElementById("profile-username")
-
-
 
 function credential() {
   let found=false
