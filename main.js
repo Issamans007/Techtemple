@@ -398,44 +398,87 @@ let newItem = {
 };
 
 if(mood=='add'){
-  items.push(newItem);
-  loading_container.style.display="flex"
-  clearInputs();
-  setTimeout(() => {
-    loading_container.style.display="none"
-    tools_container.style.display="none";
-    
+  if(crudvalidation()){
+    items.push(newItem);
+    loading_container.style.display="flex"
+    clearInputs();
+    setTimeout(() => {
+      loading_container.style.display="none"
+      tools_container.style.display="none";
   }, 1500);
-  
+  }else{
+    alert("please fill the required inputs")
+  }
 }else{
-  let changeItem={
-  id: id.value,
-  title: title.value,
-  price:Number(price.value),
-  description: description.value,
-  category: category.value,
-  rate: Number(rate.value),
-  count: Number(count.value),
-  brand:brand.value,
-  img: uploaded_image1.src,
-  imgs:[uploaded_image2.src,uploaded_image3.src]
-}
-  items[temp]=changeItem
-  control_Items()
-  sortItemsByRateDescAndDisplay(items)
-  mood = 'add';
-  addbutton.innerText = "ADD";
-  clearInputs();
-  loading_container.style.display="flex"
-  setTimeout(() => {
-    loading_container.style.display="none"
-    tools_container.style.display="none";
-    
-  }, 1500);
+          let changeItem={
+          id: Number(id.value),
+          title: title.value,
+          price:Number(price.value),
+          description: description.value,
+          category: category.value,
+          rate: Number(rate.value),
+          count: Number(count.value),
+          brand:brand.value,
+          img: uploaded_image1.src,
+          imgs:[uploaded_image2.src,uploaded_image3.src]
+        }
+      if(crudvalidation()){
+        items[temp]=changeItem
+        control_Items()
+         updateCartofalluser(items[temp].id,temp)
+         console.log(`id${items[temp].id} and index ${temp}`)
+        sortItemsByRateDescAndDisplay(items)
+        mood = 'add';
+        addbutton.innerText = "ADD";
+        clearInputs();
+        loading_container.style.display="flex"
+        setTimeout(() => {
+          loading_container.style.display="none"
+          tools_container.style.display="none";
+          displayFromCart()
+        }, 1500);
+
+      }else{
+        alert("please fill the required Inputs")
+      }
+ 
 }
 showData();
-console.log(items)
 }
+
+function updateCartofalluser(idofitem,indexofItem){
+  
+  let indexofItemincart = cart.findIndex(element => element.id === idofitem);
+  console.log(`indexofItemincart is ${indexofItemincart}`)
+  let tmp;
+  for(let i=0;i<users.length;i++){
+    for(let j=0;j<users[i].cart.length;j++){
+      if(users[i].cart[j].id==idofitem){
+         tmp=users[i].cart[j].countincart
+        users[i].cart[j]=items[indexofItem];
+        users[i].cart[j].countincart=tmp;
+        break;
+      }
+    }
+  }
+  if(indexofItemincart!=-1){
+    tmp = cart[indexofItemincart].countincart
+    cart[indexofItemincart]=items[indexofItem]
+    cart[indexofItemincart].countincart=tmp;
+  }
+ 
+}
+/*function updateCurrentCart(idofitem,indexofItem){
+  for(let i=0;i<cart.length;i++){
+    if(cart[i].id==idofitem){
+      let temp=cart[i].countincart
+      cart[i]=items[indexofItem];
+      cart[i].countincart=temp;
+      break;
+    }
+  }
+  control_Items()
+}*/
 
 function getNewId() {
 let maxId = Math.max(...items.map(item => item.id));
@@ -472,8 +515,8 @@ tbody.innerHTML = table;
 }
 
 
-function updateData(id){
-  let i = items.findIndex(element => element.id === id);
+function updateData(ids){
+  let i = items.findIndex(element => element.id === ids);
 id.value=items[i].id
 title.value=items[i].title
 price.value=items[i].price
@@ -566,6 +609,15 @@ function deleteItem(id){
     sortItemsByRateDescAndDisplay(items)
   }
 
+}
+
+function crudvalidation(){
+  if(title.value.trim()!=""&&
+  price.value.trim()!=""&&
+  rate.value.trim()!=""&&
+  count.value.trim()!=""&&
+  description.value.trim()!="")
+  return true;else return false;
 }
 
 //cruds
@@ -784,7 +836,9 @@ function clear_cart(){
 }
 
 function increase_product_countity(id){
+  console.log(id)
   let i = cart.findIndex(element => element.id === id);
+  console.log(i)
   if(cart[i].countincart+1<=cart[i].count)
   cart[i].countincart++;
   displayFromCart();
