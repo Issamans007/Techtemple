@@ -1109,24 +1109,22 @@ let users=[{
   password:"123",
   email:"fakih@gmail.com",
   type:"admin",
-  cart:[{brand: "samsung",category: "phone",count: 3,countincart: 1,description: "Li-Po 5000 mAh, non-removable|25W wired|Octa-core (2x2.2 GHz Cortex-A76 & 6x2.0 GHz Cortex-A55)",id: 11,img: "/images/dynamic-page-image/A21.png",
-  imgs: ['images/dynamic-page-image/acer.jpeg', 'images/dynamic-page-image/acer.jpeg'],price: 280,rate: 9.9,
-  title: "SAMSUNG-A21"}]
+  cart:[]
 },
 {
   username:"issa",
   password:"123",
   email:"issa@gmail.com",
+  type:"admin",
+  cart:[],
+},
+{
+  username:"newuser",
+  password:"2024",
+  email:"new@gmail.com",
   type:"user",
-  cart:[]
+  cart:[],
 }]
-
-
-
-
-
-
-
 
 
 
@@ -1136,6 +1134,9 @@ edit_button.style.display="none"
 let loginobject={};
 let signupbutton=document.getElementById("signupbutton")
 let profile_username=document.getElementById("profile-username")
+
+
+
 function credential() {
   let found=false
   var username = document.getElementById('username').value;
@@ -1199,6 +1200,9 @@ logoutbutton.addEventListener("click",function(){
   
   
 })
+
+
+
 
 function control_Users(){
   for(let i=0;i<users.length;i++){
