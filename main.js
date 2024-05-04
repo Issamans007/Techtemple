@@ -957,6 +957,7 @@ function dispaly_items_dynamic_body(name){
   cruds.style.display='none'
   contact.style.display='none'
   categories_body.style.display='none'
+  LogIN.style.display='none'
   dynmic_category_page.style.display='flex'
   if(name=="phone"){
     dynamic_title.innerText="SMART PHONES";
