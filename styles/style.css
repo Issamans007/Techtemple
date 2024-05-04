@@ -732,6 +732,7 @@ transition: 0.2s;
   background-color: white;
   border-radius: 20px;
   padding: 20px 50px;
+  overflow-y: scroll;
 }
 #close-edit-container{
   position: absolute;
