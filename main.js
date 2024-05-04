@@ -309,6 +309,9 @@ let items = [
   imgs:["images/dynamic-page-image/acer.jpeg","images/dynamic-page-image/acer.jpeg"]
   },
 ];
+
+
+
 let input_file1=document.getElementById('upload1');
 let uploaded_image1=document.getElementById('addimg1')
 
@@ -467,7 +470,7 @@ table +=`
 let tbody=document.getElementById('tbody');
 tbody.innerHTML = table;
 }
-showData();
+
 
 function updateData(id){
   let i = items.findIndex(element => element.id === id);
@@ -512,8 +515,8 @@ for (let i = 0; i < items.length; i++) {
               <td>${items[i].brand}</td>
               <td>${items[i].rate}</td>
               <td>${items[i].count}</td>
-              <td><button onclick="updateData(${i})" class="update">update</button></td>
-              <td><button onclick="deleteItem(${i})" class="delete">delete</button></td>
+              <td><button onclick="updateData(${items[i].id})" class="update">update</button></td>
+              <td><button onclick="deleteItem(${items[i].id})" class="delete">delete</button></td>
           </tr>
       `;
   } else if (searchMod === 'category' && items[i].category.toLowerCase().includes(value.toLowerCase())) {
@@ -527,8 +530,8 @@ for (let i = 0; i < items.length; i++) {
               <td>${items[i].brand}</td>
               <td>${items[i].rate}</td>
               <td>${items[i].count}</td>
-              <td><button onclick="updateData(${i})" class="update">update</button></td>
-              <td><button onclick="deleteItem(${i})" class="delete">delete</button></td>
+              <td><button onclick="updateData(${items[i].id})" class="update">update</button></td>
+              <td><button onclick="deleteItem(${items[i].id})" class="delete">delete</button></td>
           </tr>
       `;
   }
@@ -1261,6 +1264,7 @@ function initialize() {
     }else{
       items = JSON.parse(localStorage.getItem('items'));
     }
+    showData();
 }
 initialize()
 //sign in
