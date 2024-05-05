@@ -741,7 +741,6 @@ transition: 0.2s;
   height: 20px;
   cursor: pointer;
 }
-
 #upload-imgs-body{
   display: flex;
   justify-content: space-around;

@@ -454,7 +454,7 @@ function updateCartofalluser(idofitem,indexofItem){
     for(let j=0;j<users[i].cart.length;j++){
       if(users[i].cart[j].id==idofitem){
          tmp=users[i].cart[j].countincart
-        users[i].cart[j]=items[indexofItem];
+        users[i].cart[j]=Object.assign({},items[indexofItem]);
         users[i].cart[j].countincart=tmp;
         break;
       }
@@ -462,22 +462,12 @@ function updateCartofalluser(idofitem,indexofItem){
   }
   if(indexofItemincart!=-1){
     tmp = cart[indexofItemincart].countincart
-    cart[indexofItemincart]=items[indexofItem]
+    cart[indexofItemincart]=Object.assign({},items[indexofItem])
     cart[indexofItemincart].countincart=tmp;
   }
  
 }
-/*function updateCurrentCart(idofitem,indexofItem){
-  for(let i=0;i<cart.length;i++){
-    if(cart[i].id==idofitem){
-      let temp=cart[i].countincart
-      cart[i]=items[indexofItem];
-      cart[i].countincart=temp;
-      break;
-    }
-  }
-  control_Items()
-}*/
+
 
 function getNewId() {
 let maxId = Math.max(...items.map(item => item.id));
@@ -751,7 +741,7 @@ let cart=[];
 function addToCart(i){
   console.log(loginobject)
   if(loginobject.username!=null){
-    let cartobj=items[i]
+    let cartobj = Object.assign({}, items[i]);
     cartobj.countincart=1;
     let found=false;
     for(let j=0;j<cart.length;j++){
@@ -829,7 +819,7 @@ function clear_cart(){
   createItemCards(string_from_input);
   change_cart_number();
   control_Users();
-  if(dynamic_products_body.style.display=="flex")
+  if(dynmic_category_page.style.display=="flex")
   dispaly_items_dynamic_body(categorychoosen);
   
 }
@@ -852,7 +842,7 @@ if(cart[i].countincart==0){
   change_cart_number();
   control_Users()
 }
-if(dynamic_products_body.style.display=="flex")
+if(dynmic_category_page.style.display=="flex")
 dispaly_items_dynamic_body(categorychoosen);
 displayFromCart()
 getPriceForAllProduct()
@@ -869,7 +859,7 @@ function control_cart(){
 }
 
 function checkouts(){
-  
+  if(confirm("comfirm")){
   if(cart.length!=0){
     console.log("clicked")
     for(let i=0;i<cart.length;i++){
@@ -883,7 +873,6 @@ function checkouts(){
         }
       }
     }
-    if(confirm("comfirm")){
       loading_container.style.display='flex'
       setTimeout(() => {
          clear_cart()
@@ -1023,7 +1012,6 @@ if(datafounded==false){
   console.log("no data found")
     for(let z=0;z<items.length;z++){
       let stringcart='Add to cart'
-  let functionalty=''
   for(let j=0;j<cart.length;j++){
     if(items[z].id==cart[j].id){
       functionalty='disabled'
@@ -1318,6 +1306,7 @@ function initialize() {
     showData();
     sortItemsByRateDescAndDisplay(items);
 }
+
 initialize()
 //sign in
 window.addEventListener('resize', function(){
